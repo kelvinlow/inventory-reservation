@@ -330,7 +330,13 @@ function renderReservation(): string {
         </div>
         <div>
           <span class="meta-label">Expires In</span>
-          <strong class="${countdownTone}">${countdown}</strong>
+          <strong
+            class="${countdownTone}"
+            data-countdown-expires-at="${escapeHtml(state.activeReservation.expires_at)}"
+            data-reservation-status="${escapeHtml(state.activeReservation.status)}"
+          >
+            ${countdown}
+          </strong>
         </div>
       </div>
       ${
@@ -365,7 +371,7 @@ function renderAdmin(): string {
           <td>${escapeHtml(reservation.sku_id.slice(0, 8))}</td>
           <td>${reservation.quantity}</td>
           <td>${escapeHtml(reservation.status)}</td>
-          <td>${escapeHtml(formatRelativeTime(reservation.created_at))}</td>
+          <td data-relative-time="${escapeHtml(reservation.created_at)}">${escapeHtml(formatRelativeTime(reservation.created_at))}</td>
         </tr>
       `,
     )
@@ -380,7 +386,7 @@ function renderAdmin(): string {
           <td>${escapeHtml(order.reservation_id.slice(0, 8))}</td>
           <td>${escapeHtml(order.status)}</td>
           <td>${escapeHtml(order.payment_reference ?? '-')}</td>
-          <td>${escapeHtml(formatRelativeTime(order.created_at))}</td>
+          <td data-relative-time="${escapeHtml(order.created_at)}">${escapeHtml(formatRelativeTime(order.created_at))}</td>
         </tr>
       `,
     )
@@ -566,6 +572,38 @@ function attachEvents(): void {
   });
 }
 
+function updateDynamicContent(): void {
+  document.querySelectorAll<HTMLElement>('[data-countdown-expires-at]').forEach((element) => {
+    const expiresAt = element.dataset.countdownExpiresAt;
+    const reservationStatus = element.dataset.reservationStatus;
+    if (!expiresAt) return;
+
+    const secondsRemaining = getSecondsRemaining(expiresAt);
+    const countdown = formatCountdown(secondsRemaining);
+    const tone =
+      reservationStatus && reservationStatus !== 'pending'
+        ? 'neutral'
+        : secondsRemaining <= 0
+        ? 'danger'
+        : secondsRemaining <= 30
+          ? 'danger'
+          : secondsRemaining <= 120
+            ? 'warn'
+            : 'good';
+
+    element.textContent = countdown;
+    element.classList.remove('good', 'warn', 'danger', 'neutral');
+    element.classList.add(tone);
+  });
+
+  document.querySelectorAll<HTMLElement>('[data-relative-time]').forEach((element) => {
+    const value = element.dataset.relativeTime;
+    if (!value) return;
+
+    element.textContent = formatRelativeTime(value);
+  });
+}
+
 function escapeHtml(value: string): string {
   return value
     .replaceAll('&', '&amp;')
@@ -579,5 +617,5 @@ render();
 void refreshProducts();
 void loadStoredReservation();
 window.setInterval(() => {
-  render();
+  updateDynamicContent();
 }, 1000);
