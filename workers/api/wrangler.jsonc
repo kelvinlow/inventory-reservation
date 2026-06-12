@@ -1,0 +1,44 @@
+{
+  "name": "inventory-reservation-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-01-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // D1 Database binding
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "inventory-reservation-db",
+      "database_id": "REPLACE_WITH_ACTUAL_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+
+  // Durable Objects
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "INVENTORY_DO",
+        "class_name": "InventoryReservationDO"
+      }
+    ]
+  },
+
+  // Migrations for Durable Objects
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["InventoryReservationDO"]
+    }
+  ],
+
+  // Triggers
+  "triggers": {
+    "crons": ["*/5 * * * *"]
+  },
+
+  // Dev settings
+  "dev": {
+    "port": 8787
+  }
+}

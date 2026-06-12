@@ -1,0 +1,22 @@
+{
+  "name": "inventory-reservation",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "workers/api"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=workers/api",
+    "dev:web": "npm run dev --workspace=apps/web",
+    "dev:api": "npm run dev --workspace=workers/api",
+    "build": "npm run build --workspaces",
+    "build:web": "npm run build --workspace=apps/web",
+    "build:api": "npm run build --workspace=workers/api",
+    "test": "npm run test --workspace=workers/api",
+    "db:migrate:local": "npm run db:migrate:local --workspace=workers/api",
+    "db:migrate:remote": "npm run db:migrate:remote --workspace=workers/api"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3"
+  }
+}

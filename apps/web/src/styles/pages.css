@@ -1,0 +1,513 @@
+/* ===== Header ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 var(--space-6);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+.header-logo-icon {
+  width: 32px;
+  height: 32px;
+  background: var(--color-accent-gradient);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.125rem;
+}
+
+.header-logo-text {
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header-nav-link {
+  padding: var(--space-2) var(--space-4);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.header-nav-link:hover {
+  color: var(--color-text-primary);
+  background: var(--color-bg-glass);
+}
+
+.header-nav-link.active {
+  color: var(--color-accent-primary);
+  background: rgba(6, 182, 212, 0.1);
+}
+
+/* ===== Product List Page ===== */
+.product-list-header {
+  margin-bottom: var(--space-8);
+  animation: fadeInUp var(--transition-slow) ease;
+}
+
+.product-list-header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.product-list-header p {
+  color: var(--color-text-secondary);
+  font-size: 1.0625rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.product-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.product-card-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--color-accent-gradient);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.375rem;
+  flex-shrink: 0;
+}
+
+.product-card-name {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: var(--space-1);
+}
+
+.product-card-sku {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+}
+
+.product-card-description {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.product-stock-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.product-stock-count {
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.product-stock-count.in-stock {
+  color: var(--color-success);
+}
+
+.product-stock-count.low-stock {
+  color: var(--color-warning);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.product-stock-count.out-of-stock {
+  color: var(--color-error);
+}
+
+.product-stock-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ===== Product Detail Page ===== */
+.product-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  animation: fadeInUp var(--transition-slow) ease;
+}
+
+.product-detail-hero {
+  text-align: center;
+  margin-bottom: var(--space-8);
+}
+
+.product-detail-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--color-accent-gradient);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin: 0 auto var(--space-6);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.3);
+}
+
+.product-detail-name {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+}
+
+.product-detail-sku {
+  font-family: var(--font-mono);
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.product-detail-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.product-detail-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.product-detail-description {
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  font-size: 0.9375rem;
+}
+
+.product-detail-stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.product-stat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.product-stat:last-child {
+  border-bottom: none;
+}
+
+.product-stat-label {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.product-stat-value {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.product-reserve-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.product-reserve-card .btn {
+  width: 100%;
+}
+
+/* ===== Reservation Detail Page ===== */
+.reservation-detail {
+  max-width: 640px;
+  margin: 0 auto;
+  animation: fadeInUp var(--transition-slow) ease;
+}
+
+.reservation-status-card {
+  text-align: center;
+  padding: var(--space-10);
+  margin-bottom: var(--space-6);
+}
+
+.reservation-status-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto var(--space-5);
+}
+
+.reservation-status-icon.reserved {
+  background: var(--color-info-soft);
+  color: var(--color-info);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.3);
+}
+
+.reservation-status-icon.confirmed {
+  background: var(--color-success-soft);
+  color: var(--color-success);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.3);
+}
+
+.reservation-status-icon.expired {
+  background: var(--color-warning-soft);
+  color: var(--color-warning);
+}
+
+.reservation-status-icon.cancelled {
+  background: var(--color-error-soft);
+  color: var(--color-error);
+}
+
+.reservation-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.reservation-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+.reservation-info-label {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.reservation-info-value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.reservation-actions {
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.reservation-actions .btn {
+  flex: 1;
+}
+
+/* ===== Confirmation Result ===== */
+.confirmation-result {
+  max-width: 560px;
+  margin: 0 auto;
+  text-align: center;
+  animation: fadeInUp var(--transition-slow) ease;
+}
+
+.confirmation-icon {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  margin: 0 auto var(--space-6);
+  background: var(--color-success-soft);
+  color: var(--color-success);
+  box-shadow: var(--shadow-glow-success);
+  animation: scaleIn var(--transition-slow) ease;
+}
+
+.confirmation-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: var(--space-3);
+}
+
+.confirmation-subtitle {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-8);
+  font-size: 1rem;
+}
+
+.confirmation-details {
+  text-align: left;
+}
+
+/* ===== Back Button ===== */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: var(--space-6);
+  transition: color var(--transition-fast);
+}
+
+.back-button:hover {
+  color: var(--color-text-primary);
+}
+
+/* ===== Not Found Page ===== */
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  text-align: center;
+  gap: var(--space-6);
+  animation: fadeInUp var(--transition-slow) ease;
+}
+
+.not-found-code {
+  font-size: 8rem;
+  font-weight: 800;
+  background: var(--color-accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  opacity: 0.8;
+}
+
+.not-found-message {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  max-width: 400px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product-detail-body {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reservation-actions {
+    flex-direction: column;
+  }
+
+  .header-nav {
+    gap: 0;
+  }
+
+  .header-nav-link {
+    padding: var(--space-2) var(--space-3);
+    font-size: 0.8125rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .countdown-display {
+    font-size: 2rem;
+  }
+
+  .product-detail-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 1.5rem;
+  }
+
+  .product-detail-name {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+
+  .card {
+    padding: var(--space-4);
+  }
+
+  .modal {
+    margin: var(--space-4);
+  }
+
+  .toast-container {
+    left: var(--space-4);
+    right: var(--space-4);
+  }
+
+  .toast {
+    min-width: unset;
+  }
+}
