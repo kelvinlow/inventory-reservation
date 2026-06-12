@@ -9,7 +9,7 @@
     {
       "binding": "DB",
       "database_name": "inventory-reservation-db",
-      "database_id": "REPLACE_WITH_ACTUAL_DATABASE_ID",
+      "database_id": "64a9bfa2-e1b8-446a-bcb5-f69f3b37db65",
       "migrations_dir": "migrations"
     }
   ],
